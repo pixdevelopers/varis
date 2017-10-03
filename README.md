@@ -1,1 +1,1 @@
-# varis
+# Clinic Varis - Wordpress Theme
