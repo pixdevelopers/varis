@@ -49,6 +49,12 @@
     padding:100px 15px;
     line-height: 25px;
 
+    &.articles{
+        background:#f1f1f1;
+        width: 100% !important;
+    }
+
+
 }
 .header {
     background: #37b5d8 url(../images/bg.png) repeat center;
@@ -310,7 +316,7 @@
         p {
             font-size: 15px;
             color: #666;
-            text-align: justify;
+            text-align: right;
             line-height: 28px;
             margin: 20px auto;
         }
@@ -621,3 +627,53 @@ footer {
     padding: 15px;
   }
 }
+
+
+  .article-card {
+    background: #FFF;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    margin-bottom: 30px;
+    .article-top {
+      border-bottom: 1px solid #DDD;
+      padding: 25px;
+      .article-title {
+        color: #1fb1d9;
+        font-size: 15px;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .article-excerpt {
+        color: #555;
+        font-size: 12px;
+        line-height: 25px;
+      }
+    }
+    .article-bottom {
+      padding: 25px;
+      .meta-item {
+        font-size: 11px;
+        color: #1fb1d9;
+        margin-right: 60px;
+        a {
+          color: #1fb1d9;
+        }
+        // @include media-breakpoint-down(sm) {
+        //   width: 100%;
+        //   float: none !important;
+        //   margin: 0;
+        //   padding: 10px 0;
+        // }
+        &.read-more {
+          margin: 0;
+          a {
+            color: #1fb1d9;
+          }
+        }
+        .fa {
+          margin-left: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+  }

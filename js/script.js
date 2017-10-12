@@ -1,5 +1,5 @@
-// KEYHAN JavaScript Document
+// KEYHAN & Mamo JavaScript Document
 
-$(window).load(function () { });
-
-$(document).ready(function () { });
+$(document).ready(function () {
+     $('.matchHeight').matchHeight();
+});

@@ -14,8 +14,12 @@
     font-style: normal
 }
 
+.mce-notification{
+display: none !important;
+z-index:-1;
+}
 * {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     border: none;
     outline: none;
@@ -29,3 +33,9 @@
 .acf-image-uploader .has-image{
 	float: right !important;
 }
+
+.ul.acf-radio-list.horizontal li, ul.acf-checkbox-list.horizontal li{
+    float: right !important;
+    margin-left: 20px;
+    margin-right: 0 !important;
+} 

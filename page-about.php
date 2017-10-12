@@ -56,7 +56,21 @@ if ( $query->have_posts() ) {
         ?>
                 <div class="col-md-3 col-sm-6">
                     <div class="photo">
-                        <img src="<?php the_field('staff_photo'); ?>" />
+                        <?php 
+                        $photo = get_field('staff_photo'); 
+                        if($photo){
+                          echo wp_get_attachment_image($photo, 'avatars' );  
+                        }
+                        else{
+                            ?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/people.png">
+                        <?php
+                        }
+                         ?>
+                        
+                        
+                        
+                       
                     </div>
                     <h4><?php the_field('staff_name'); ?></h4>
                     <p><?php the_field('staff_role'); ?></p>

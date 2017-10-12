@@ -3,6 +3,8 @@
  * Template Name: Home page Template
  **/
  ?>
+
+
       <?php 
      include('templates/home-header.php'); 
      ?>
@@ -49,14 +51,16 @@
                             
             <div class="col-md-4">
                 <div class="service">
+                    <div style="margin-bottom:20px;" class="matchHeight">
                     <h4><?php the_title(); ?></h4>
                    <?php 
-                                    echo the_post_thumbnail('home_thumb_s' ,array('class' => ''));
+                                    echo the_post_thumbnail('services_thumbnail' ,array('class' => ''));
                                     ?>
+                    
                     <p><?php
                     $content = get_the_content();
                     echo getExcerpt($content,25);
-                    ?> ...</p>
+                    ?> ...</p></div>
                     <a href="<?php the_permalink(); ?>">بیشتر بخوانید<i class="fa fa-angle-left" aria-hidden="true"></i></a>
                 </div>
             </div>
@@ -71,7 +75,8 @@
         <div class="container">
             
             <?php 
-
+                        $type = $array = get_field('home_articles_type');
+                        if($type == 'manual'){
                         $array = get_field('home_articles'); 
                         foreach ($array as $key => $value) {
                             $post = get_post($array[$key]);
@@ -82,7 +87,7 @@
                             <div class="col-md-4">
                 <a href="<?php the_permalink(); ?>" class="article">
                     <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                    <h4><?php the_title(); ?></h4>
+                    <h4 class="matchHeight"><?php the_title(); ?></h4>
                     <span class="date">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                         <?php   echo the_date('d M Y'); ?>
@@ -93,9 +98,47 @@
 
            
                             <?php
+
                             wp_reset_postdata();
                         }
-                        ?>
+                    }
+                    if($type == 'auto'){
+// WP_Query arguments
+$args = array(
+    'post_type'              => array( 'articles_post_type' ),
+    'posts_per_page'         => '3',
+);
+
+// The Query
+$query = new WP_Query( $args );
+
+// The Loop
+if ( $query->have_posts() ) {
+    while ( $query->have_posts() ) {
+        $query->the_post();
+        ?>
+                            <div class="col-md-4">
+                <a href="<?php the_permalink(); ?>" class="article">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                    <h4 class="matchHeight"><?php the_title(); ?></h4>
+                    <span class="date">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <?php   echo the_date('d M Y'); ?>
+                    </span>
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </a>
+            </div>
+        <?php 
+    }
+} else {
+    // no posts found
+}
+
+// Restore original Post Data
+wp_reset_postdata();                      
+                    }
+                       
+                    ?>
         </div>
     </div>
     <?php get_footer(); ?>
